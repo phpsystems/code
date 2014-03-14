@@ -1,6 +1,7 @@
 #!/usr/bin/python
 import json
 import urllib
+import sys
 
 def showsome(searchfor):
   query = urllib.urlencode({'q': searchfor})
@@ -15,4 +16,11 @@ def showsome(searchfor):
   for h in hits: print ' ', h['url']
   print 'For more results, see %s' % data['cursor']['moreResultsUrl']
 
-showsome('gallery.php-systems.com')
+
+if __name__ == '__main__':
+  if len (sys.argv) < 2:
+    print 'Usage: %s <search term>' % sys.argv[0]
+    print '  Try using quotes if you want multiple terms'
+    print '  Eg %s \"test results\"' % sys.argv[0]
+    sys.exit(1) 
+  showsome(sys.argv[1])
