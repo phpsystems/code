@@ -56,8 +56,9 @@ def lookupDevice(addr):
     print '[+] Device: %s' % mac.oui.registration().org
 
 def findDevs():
-    foundDevs = discover_devices(lookup_names=True)
-    for (addr, name) in foundDevs:
+    try: 
+      foundDevs = discover_devices(lookup_names=True)
+      for (addr, name) in foundDevs:
         if addr not in alreadyFound:
             print '[*] Found Bluetooth Device: ' + str(name)
             print '[+] MAC address: ' + str(addr)
@@ -71,6 +72,8 @@ def findDevs():
             enumServices(addr)
             alreadyFound.append(addr)
             print
+    except Exception, e:
+      print 'Bluetooth Error: %s' % e
 
 while True:
     findDevs()
