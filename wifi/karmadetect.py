@@ -115,8 +115,8 @@ def main(sendInterface, recieveInterface,debug=1):
 
 # Call the main Program
 if __name__ == "__main__":
-    if len(sys.argv) < 3:
-        print "Usage %s send_interface monitor_interface [debug]" % sys.argv[0]
+    if len(sys.argv) < 2:
+        print "Usage %s send_interface monitor_interface" % sys.argv[0]
         sys.exit(1)
 
     main(sys.argv[1], sys.argv[2])
