@@ -1,7 +1,9 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
+
 from bluetooth import *
+import netaddr
 import time
 
 alreadyFound = []
@@ -49,12 +51,17 @@ def bluebug(addr, port):
         print '[-] Bluebug failed'
     print '[=] Bluebug Complete'
 
+def lookupDevice(addr):
+    mac = netaddr.EUI(addr)
+    print '[+] Device: %s' % mac.oui.registration().org
+
 def findDevs():
     foundDevs = discover_devices(lookup_names=True)
     for (addr, name) in foundDevs:
         if addr not in alreadyFound:
             print '[*] Found Bluetooth Device: ' + str(name)
             print '[+] MAC address: ' + str(addr)
+            lookupDevice(addr)
             print '[=] Starting port scan'
             for port in range(1, 30):
                 test=rfcommCon(addr, port)
