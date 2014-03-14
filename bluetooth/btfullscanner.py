@@ -1,10 +1,10 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-
 from bluetooth import *
 import netaddr
 import time
+import sys
 
 alreadyFound = []
 
@@ -74,6 +74,7 @@ def findDevs():
             print
     except Exception, e:
       print 'Bluetooth Error: %s' % e
+      sys.exit(1)
 
 while True:
     findDevs()
