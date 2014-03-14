@@ -1,10 +1,11 @@
 Wifi
 ====
 
-Karmadetect.{sh,py}
--------------------
+Karmadetect.py
+--------------
 
-karmadetect is a few scripts to try to detect karma.
+karmadetect.py is a script to try to detect karma.
+The idea is, generate a random SSID, probe for it, and see if karma replies.
 
 Current Status: possibly not working, needs more testing / clean up. 
 
