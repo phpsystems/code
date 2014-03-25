@@ -5,16 +5,24 @@ Scripts to take the download reports from RIPE's atlas project (https://atlas.ri
 then look at the traceroutes to find out which AS they belong to.
 
 This can then be used to alert if the penultimate hop is not on a list of approved AS Numbers to provide routing. 
-If the number of ASs is less than 2, ingnore the alert, as that is private peering.
+If the number of ASes is less than 2, ignore the alert, as that is private peering.
 
+To Run:
+-------
 
+Modify the asnpath.py script to have the correct Peer AS Numbers.
+Run the script of the report, with the url as the parameter. 
 
+Act on alerts.
+
+TODO: last AS Check to check the target AS Number...
+
+The Following is NOT my work:
 
 
 Rib_converter
 -------------
 
-NOT My Work.
 
 rib_converter was downloaded from:
 
