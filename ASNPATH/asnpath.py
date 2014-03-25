@@ -6,8 +6,10 @@ import sys
 import PyASN
 import mechanize
 
+#targetAS=35228
+targetAS=31655
 transits=[6461,3356,174,3549,]
-private=[1234,2345,]
+private=[1234,2345,3456,]
 
 def lookupASN(p,ipaddr):
 
@@ -23,11 +25,19 @@ def checkAS(aspath):
     assize = len(aspath)
     ok = 0
     if aspath[ len(aspath) - 1 ] is not None:
-        print "[+] Last AS: %s " % aspath[ len(aspath) - 1 ]
-        checkas = aspath[ len(aspath) - 1 ]
+        if aspath[ len(aspath) - 1 ] == targetAS:
+            print "[+] Last AS: %s " % aspath[ len(aspath) - 2 ]
+            checkas = aspath[ len(aspath) - 2 ]
+        else:
+            print "[+] Last AS: %s " % aspath[ len(aspath) - 1 ]
+            checkas = aspath[ len(aspath) - 1 ]
     else:
-        print "[+] Last AS: %s " % aspath[ len(aspath) - 2 ]
-        checkas = aspath[ len(aspath) - 2 ]
+        if aspath[ len(aspath) - 2 ] == targetAS:
+            print "[+] Last AS: %s " % aspath[ len(aspath) - 3 ]
+            checkas = aspath[ len(aspath) - 3 ]
+        else:
+            print "[+] Last AS: %s " % aspath[ len(aspath) - 2 ]
+            checkas = aspath[ len(aspath) - 2 ]
     for i in range(len(transits)): 
          if transits[i] == checkas:
              print "[+] Transit Found"
